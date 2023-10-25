@@ -32,3 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 likeButton.textContent = game.liked ? "Liked" : "Like";
                 likeButton.classList.toggle("liked");
             });
+
+            const orderButton = document.createElement("button");
+            orderButton.textContent = game.ordered ? "Ordered" : "Order";
+            orderButton.classList.add("ordered-button");
+            orderButton.addEventListener("click", () => {
+                game.ordered = !game.ordered;
+                orderButton.textContent = game.ordered ? "Ordered" : "Order";
+                orderButton.classList.toggle("ordered");
+            });
