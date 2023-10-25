@@ -103,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        filterGames();
+
+        searchInput.addEventListener("input", filterGames);
+        filterSelect.addEventListener("change", filterGames);
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+});
+
 
 
 
