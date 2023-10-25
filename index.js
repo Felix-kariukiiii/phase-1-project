@@ -23,3 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const gamesImage = document.createElement("img");
             gamesImage.src = game.thumb;
+
+            const likeButton = document.createElement("button");
+            likeButton.textContent = game.liked ? "Liked" : "Like";
+            likeButton.classList.add("like-button");
+            likeButton.addEventListener("click", () => {
+                game.liked = !game.liked;
+                likeButton.textContent = game.liked ? "Liked" : "Like";
+                likeButton.classList.toggle("liked");
+            });
