@@ -89,6 +89,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const filterValue = filterSelect.value;
             const searchValue = searchInput.value.toLowerCase();
 
+            gamesContainer.innerHTML = "";
+
+            gamesData.forEach((game) => {
+                if (
+                    (filterValue === "all" ||
+                        (filterValue === "liked" && game.liked) ||
+                        (filterValue === "ordered" && game.ordered)) &&
+                    (game.title.toLowerCase().includes(searchValue) || searchValue === "")
+                ) {
+                    showGames(game);
+                }
+            });
+        }
+
+
+
 
 
 
