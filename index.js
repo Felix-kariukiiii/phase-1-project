@@ -54,3 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     commentButton.textContent = "Commented";
                 }
             });
+
+            
+            const gamesName = document.createElement("h2");
+            gamesName.textContent = game.title;
