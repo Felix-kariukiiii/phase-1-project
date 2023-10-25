@@ -47,3 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
             commentButton.classList.add("comment-button");
             commentButton.addEventListener("click", () => {
                 const commentText = commentInput.value;
+                if (commentText) {
+                    game.comments.push(commentText);
+                    addComments(comments, game.comments);
+                    commentInput.value = "";
+                    commentButton.textContent = "Commented";
+                }
+            });
