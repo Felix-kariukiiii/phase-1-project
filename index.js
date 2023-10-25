@@ -41,3 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 orderButton.textContent = game.ordered ? "Ordered" : "Order";
                 orderButton.classList.toggle("ordered");
             });
+
+            const commentButton = document.createElement("button");
+            commentButton.textContent = "Add Comment";
+            commentButton.classList.add("comment-button");
+            commentButton.addEventListener("click", () => {
+                const commentText = commentInput.value;
