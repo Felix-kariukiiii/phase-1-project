@@ -68,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const rating = document.createElement("p");
             rating.textContent = `Rating: ${game.dealRating} out of 10`;
 
+            const comments = document.createElement("div");
+            comments.classList.add("comments");
+
 
 
 
