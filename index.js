@@ -7,3 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((data) => {
         const gamesData = data;
+
+        function addComments(parent, comments) {
+            parent.innerHTML = "";
+            comments.forEach((commentText) => {
+                const comment = document.createElement("p");
+                comment.textContent = commentText;
+                parent.appendChild(comment);
+            });
+        }
