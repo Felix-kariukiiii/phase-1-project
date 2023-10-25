@@ -63,5 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
             salePrice.textContent = `Sale Price: ${game.salePrice}`;
 
             const normalPrice = document.createElement("p");
-                normalPrice.textContent = `Normal Price: ${game.normalPrice}`;
+            normalPrice.textContent = `Normal Price: ${game.normalPrice}`;
+
+            const rating = document.createElement("p");
+            rating.textContent = `Rating: ${game.dealRating} out of 10`;
+
+
+
 
