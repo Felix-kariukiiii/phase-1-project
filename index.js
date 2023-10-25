@@ -58,3 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const gamesName = document.createElement("h2");
             gamesName.textContent = game.title;
+
+            const salePrice = document.createElement("p");
+                salePrice.textContent = `Sale Price: ${game.salePrice}`;
