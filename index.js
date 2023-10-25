@@ -20,3 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         function showGames(game) {
             const gamesCard = document.createElement("div");
             gamesCard.classList.add("games-card");
+
+            const gamesImage = document.createElement("img");
+            gamesImage.src = game.thumb;
