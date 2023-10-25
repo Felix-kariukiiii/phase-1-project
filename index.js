@@ -81,9 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
             gamesCard.appendChild(commentInput);
             gamesCard.appendChild(commentButton);
             gamesCard.appendChild(comments);
-            
+
             gamesContainer.appendChild(gamesCard);
         }
+
+        function filterGames() {
+            const filterValue = filterSelect.value;
+            const searchValue = searchInput.value.toLowerCase();
+
 
 
 
