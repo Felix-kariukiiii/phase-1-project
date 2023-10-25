@@ -16,3 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 parent.appendChild(comment);
             });
         }
+
+        function showGames(game) {
+            const gamesCard = document.createElement("div");
+            gamesCard.classList.add("games-card");
