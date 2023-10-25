@@ -57,8 +57,6 @@ body {
 .like-button.liked, .ordered-button.ordered {
     background-color: #e50914; 
 }
-
-
 #filter-select, #search-input {
     margin: 10px;
     padding: 5px;
