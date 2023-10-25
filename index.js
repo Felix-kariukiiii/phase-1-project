@@ -60,4 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
             gamesName.textContent = game.title;
 
             const salePrice = document.createElement("p");
-                salePrice.textContent = `Sale Price: ${game.salePrice}`;
+            salePrice.textContent = `Sale Price: ${game.salePrice}`;
+
+            const normalPrice = document.createElement("p");
+                normalPrice.textContent = `Normal Price: ${game.normalPrice}`;
+
