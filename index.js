@@ -71,6 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const comments = document.createElement("div");
             comments.classList.add("comments");
 
+            gamesCard.appendChild(gamesName);
+            gamesCard.appendChild(salePrice);
+            gamesCard.appendChild(normalPrice);
+            gamesCard.appendChild(rating);
+            gamesCard.appendChild(gamesImage);
+            gamesCard.appendChild(likeButton);
+            gamesCard.appendChild(orderButton);
+            gamesCard.appendChild(commentInput);
+            gamesCard.appendChild(commentButton);
+            gamesCard.appendChild(comments);
+            
+            gamesContainer.appendChild(gamesCard);
+        }
+
+
 
 
 
