@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const filterSelect = document.getElementById("filter-select");
 
-    fetch("http://localhost:3000/games")
+    fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15")
         .then((response) => response.json())
         .then((data) => {
             const gamesData = data;
