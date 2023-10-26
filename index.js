@@ -4,117 +4,112 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterSelect = document.getElementById("filter-select");
 
     fetch("http://localhost:3000/games")
-    .then((response) => response.json())
-    .then((data) => {
-        const gamesData = data;
+        .then((response) => response.json())
+        .then((data) => {
+            const gamesData = data;
 
-        function addComments(parent, comments) {
-            parent.innerHTML = "";
-            comments.forEach((commentText) => {
-                const comment = document.createElement("p");
-                comment.textContent = commentText;
-                parent.appendChild(comment);
-            });
-        }
+            function addComments(parent, comments) {
+                parent.innerHTML = "";
+                comments.forEach((commentText) => {
+                    const comment = document.createElement("p");
+                    comment.textContent = commentText;
+                    parent.appendChild(comment);
+                });
+            }
 
-        function showGames(game) {
-            const gamesCard = document.createElement("div");
-            gamesCard.classList.add("games-card");
+            function showGames(game) {
+                const gamesCard = document.createElement("div");
+                gamesCard.classList.add("games-card");
 
-            const gamesImage = document.createElement("img");
-            gamesImage.src = game.thumb;
+                const gamesImage = document.createElement("img");
+                gamesImage.src = game.thumb;
 
-            const likeButton = document.createElement("button");
-            likeButton.textContent = game.liked ? "Liked" : "Like";
-            likeButton.classList.add("like-button");
-            likeButton.addEventListener("click", () => {
-                game.liked = !game.liked;
+                const likeButton = document.createElement("button");
                 likeButton.textContent = game.liked ? "Liked" : "Like";
-                likeButton.classList.toggle("liked");
-            });
+                likeButton.classList.add("like-button");
+                likeButton.addEventListener("click", () => {
+                    game.liked = !game.liked;
+                    likeButton.textContent = game.liked ? "Liked" : "Like";
+                    likeButton.classList.toggle("liked");
+                });
 
-            const orderButton = document.createElement("button");
-            orderButton.textContent = game.ordered ? "Ordered" : "Order";
-            orderButton.classList.add("ordered-button");
-            orderButton.addEventListener("click", () => {
-                game.ordered = !game.ordered;
+                const orderButton = document.createElement("button");
                 orderButton.textContent = game.ordered ? "Ordered" : "Order";
-                orderButton.classList.toggle("ordered");
-            });
+                orderButton.classList.add("ordered-button");
+                orderButton.addEventListener("click", () => {
+                    game.ordered = !game.ordered;
+                    orderButton.textContent = game.ordered ? "Ordered" : "Order";
+                    orderButton.classList.toggle("ordered");
+                });
 
-            const commentButton = document.createElement("button");
-            commentButton.textContent = "Add Comment";
-            commentButton.classList.add("comment-button");
-            commentButton.addEventListener("click", () => {
-                const commentText = commentInput.value;
-                if (commentText) {
-                    game.comments.push(commentText);
-                    addComments(comments, game.comments);
-                    commentInput.value = "";
-                    commentButton.textContent = "Commented";
-                }
-            });
+                const commentInput = document.createElement("input"); 
+                commentInput.type = "text";
+                commentInput.placeholder = "Enter your comment";
 
-            
-            const gamesName = document.createElement("h2");
-            gamesName.textContent = game.title;
+                const commentButton = document.createElement("button");
+                commentButton.textContent = "Add Comment";
+                commentButton.classList.add("comment-button");
+                commentButton.addEventListener("click", () => {
+                    const commentText = commentInput.value;
+                    if (commentText) {
+                        game.comments.push(commentText);
+                        addComments(comments, game.comments);
+                        commentInput.value = "";
+                        commentButton.textContent = "Commented";
+                    }
+                });
 
-            const salePrice = document.createElement("p");
-            salePrice.textContent = `Sale Price: ${game.salePrice}`;
+                const gamesName = document.createElement("h2");
+                gamesName.textContent = game.title;
 
-            const normalPrice = document.createElement("p");
-            normalPrice.textContent = `Normal Price: ${game.normalPrice}`;
+                const salePrice = document.createElement("p");
+                salePrice.textContent = `Sale Price: ${game.salePrice}`;
 
-            const rating = document.createElement("p");
-            rating.textContent = `Rating: ${game.dealRating} out of 10`;
+                const normalPrice = document.createElement("p");
+                normalPrice.textContent = `Normal Price: ${game.normalPrice}`;
 
-            const comments = document.createElement("div");
-            comments.classList.add("comments");
+                const rating = document.createElement("p");
+                rating.textContent = `Rating: ${game.dealRating} out of 10`;
 
-            gamesCard.appendChild(gamesName);
-            gamesCard.appendChild(salePrice);
-            gamesCard.appendChild(normalPrice);
-            gamesCard.appendChild(rating);
-            gamesCard.appendChild(gamesImage);
-            gamesCard.appendChild(likeButton);
-            gamesCard.appendChild(orderButton);
-            gamesCard.appendChild(commentInput);
-            gamesCard.appendChild(commentButton);
-            gamesCard.appendChild(comments);
+                const comments = document.createElement("div");
+                comments.classList.add("comments");
 
-            gamesContainer.appendChild(gamesCard);
-        }
+                gamesCard.appendChild(gamesName);
+                gamesCard.appendChild(salePrice);
+                gamesCard.appendChild(normalPrice);
+                gamesCard.appendChild(rating);
+                gamesCard.appendChild(gamesImage);
+                gamesCard.appendChild(likeButton);
+                gamesCard.appendChild(orderButton);
+                gamesCard.appendChild(commentInput); 
+                gamesCard.appendChild(commentButton);
+                gamesCard.appendChild(comments);
 
-        function filterGames() {
-            const filterValue = filterSelect.value;
-            const searchValue = searchInput.value.toLowerCase();
+                gamesContainer.appendChild(gamesCard);
+            }
 
-            gamesContainer.innerHTML = "";
+            function filterGames() {
+                const filterValue = filterSelect.value;
+                const searchValue = searchInput.value.toLowerCase();
 
-            gamesData.forEach((game) => {
-                if (
-                    (filterValue === "all" ||
-                        (filterValue === "liked" && game.liked) ||
-                        (filterValue === "ordered" && game.ordered)) &&
-                    (game.title.toLowerCase().includes(searchValue) || searchValue === "")
-                ) {
-                    showGames(game);
-                }
-            });
-        }
+                gamesContainer.innerHTML = "";
 
-        filterGames();
+                gamesData.forEach((game) => {
+                    if (
+                        (filterValue === "all" ||
+                            (filterValue === "liked" && game.liked) ||
+                            (filterValue === "ordered" && game.ordered)) &&
+                        (game.title.toLowerCase().includes(searchValue) || searchValue === "")
+                    ) {
+                        showGames(game);
+                    }
+                });
+            }
 
-        searchInput.addEventListener("input", filterGames);
-        filterSelect.addEventListener("change", filterGames);
-    })
-    .catch((error) => console.error("Error fetching data:", error));
+            filterGames();
+
+            searchInput.addEventListener("input", filterGames);
+            filterSelect.addEventListener("change", filterGames);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
 });
-
-
-
-
-
-
-
-
